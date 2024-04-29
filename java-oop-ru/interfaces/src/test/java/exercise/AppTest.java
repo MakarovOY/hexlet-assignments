@@ -67,9 +67,7 @@ class AppTest {
         CharSequence charSequence = new ReversedSequence("abcdef");
         String exp = "fedcba";
         assertThat(charSequence.toString()).isEqualTo(exp);
-    }
-   
-       
+    }   
     void testBuildApartmentsList3() {
         List<Home> apartments = new ArrayList<>();
         List<String> expected = new ArrayList<>();
@@ -78,7 +76,7 @@ class AppTest {
     }
 
     // BEGIN
-  @Test
+    @Test
     public void subSequence() {
         CharSequence exp = new ReversedSequence("cde");
         assertThat(charSequence.subSequence(1, 4)).isEqualTo(exp);
