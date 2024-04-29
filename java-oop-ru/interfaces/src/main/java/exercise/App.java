@@ -11,8 +11,8 @@ public class App {
 
     }
     public  static List buildApartmentsList(List<Home> homes, int countOfFirstElements) {
-        
-        if(homes.size()<countOfFirstElements){
+    
+        if (homes.size() < countOfFirstElements) {
             countOfFirstElements = homes.size();
         }
 
