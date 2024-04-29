@@ -25,11 +25,11 @@ public class Cottage implements Home {
             return 1;
         } else if (thisArea < anotherArea) {
             return -1;
-        } else { 
+            } else {
             return 0;
         }
     }
-    public String toString(){
+    public String toString() {
         return floorCount + " этажный коттедж площадью " + area + " метров";
     }
 }
