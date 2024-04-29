@@ -11,8 +11,10 @@ public class App {
 
     }
     public  static List buildApartmentsList(List<Home> homes, int countOfFirstElements) {
-
-
+        
+        if (homes.size() == 0){
+            return null;
+        }
 
         List<Home> homesToSort = new ArrayList<>(homes);
         Collections.sort(homesToSort);
