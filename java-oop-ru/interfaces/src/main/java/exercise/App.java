@@ -12,8 +12,8 @@ public class App {
     }
     public  static List buildApartmentsList(List<Home> homes, int countOfFirstElements) {
         
-        if (homes.size() == 0){
-            return null;
+        if(homes.size()<countOfFirstElements){
+            countOfFirstElements = homes.size();
         }
 
         List<Home> homesToSort = new ArrayList<>(homes);
