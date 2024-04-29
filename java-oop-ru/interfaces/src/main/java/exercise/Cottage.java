@@ -1,7 +1,7 @@
 package exercise;
 
 // BEGIN
-public class Cottage implements Home{
+public class Cottage implements Home {
 
     double area;
     int floorCount;
@@ -21,7 +21,7 @@ public class Cottage implements Home{
         double thisArea = area;
         double anotherArea = another.getArea();
 
-        if(thisArea > anotherArea){
+        if (thisArea > anotherArea) {
             return 1;
         } else if (thisArea < anotherArea) {
             return -1;
