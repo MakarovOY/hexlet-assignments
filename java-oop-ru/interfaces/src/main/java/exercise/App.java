@@ -13,7 +13,7 @@ public class App {
 
 
 
-        List<Home> homesToSort= new ArrayList<>(homes);
+        List<Home> homesToSort = new ArrayList<>(homes);
         Collections.sort(homesToSort);
         List<String> resultList = new ArrayList<>();
         homesToSort.subList(0, countOfFirstElements).forEach(e -> resultList.add(e.toString()));
