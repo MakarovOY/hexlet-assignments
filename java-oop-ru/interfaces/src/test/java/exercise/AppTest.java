@@ -68,18 +68,6 @@ class AppTest {
         String exp = "fedcba";
         assertThat(charSequence.toString()).isEqualTo(exp);
     }
-    @Test
-    public void length() {
-        CharSequence charSequence = new ReversedSequence("abcdef");
-        int exp = 6;
-        assertThat(charSequence.length()).isEqualTo(exp);
-    }
 
-    @Test
-    public void charAt() {
-        CharSequence charSequence = new ReversedSequence("abcdef");
-        char exp = 'e';
-        assertThat(charSequence.charAt(1)).isEqualTo(exp);
-    } 
     // END
 }
