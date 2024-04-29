@@ -76,5 +76,5 @@ public class ReversedSequence implements CharSequence {
     }
 
 
-}b
+}
 // END
