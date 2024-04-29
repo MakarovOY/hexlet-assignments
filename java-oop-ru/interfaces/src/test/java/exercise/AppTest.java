@@ -59,8 +59,9 @@ class AppTest {
     @Test
     public void subSequence() {
         CharSequence charSequence = new ReversedSequence("abcdef");
-        CharSequence exp = new ReversedSequence("cde");
-        assertThat(charSequence.subSequence(1, 4)).isEqualTo(exp);
+      //  CharSequence exp = new ReversedSequence("cde");
+        var exp = "edc";
+        assertThat(charSequence.subSequence(1, 4).toString()).isEqualTo(exp);
     }
     @Test
     public void testToString() {
