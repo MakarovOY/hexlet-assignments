@@ -72,12 +72,11 @@ class AppTest {
 
     }
 
-    // @Test
-    // public void subSequence() {
-    //     CharSequence exp = new ReversedSequence("cde");
-    //     assertThat(charSequence.subSequence(1, 4)).isEqualTo(exp);
-    // }
-
+    @Test
+    public void subSequence() {
+        CharSequence exp = new ReversedSequence("cde");
+        assertThat(charSequence.subSequence(1, 4)).isEqualTo(exp);
+    }
     @Test
     public void testToString() {
         CharSequence charSequence = new ReversedSequence("abcdef");
