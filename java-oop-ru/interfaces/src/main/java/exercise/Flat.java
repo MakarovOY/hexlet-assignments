@@ -32,7 +32,7 @@ public class Flat implements Home {
         } else if (thisArea < anotherArea) {
             return -1;
         } else {
-            return 0
+            return 0;
         };
 
     }
