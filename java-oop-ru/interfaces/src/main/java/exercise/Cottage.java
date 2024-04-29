@@ -25,7 +25,7 @@ public class Cottage implements Home {
             return 1;
         } else if (thisArea < anotherArea) {
             return -1;
-            } else {
+        } else {
             return 0;
         }
     }
