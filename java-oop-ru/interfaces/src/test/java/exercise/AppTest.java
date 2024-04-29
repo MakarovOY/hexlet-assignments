@@ -55,26 +55,6 @@ class AppTest {
         List<String> result = App.buildApartmentsList(apartments, 10);
         assertThat(result).isEqualTo(expected);
     }
-
-    // BEGIN
-    @Test
-    public void subSequence() {
-        CharSequence exp = new ReversedSequence("cde");
-        assertThat(charSequence.subSequence(1, 4)).isEqualTo(exp);
-    }
-    @Test
-    public void testToString() {
-        CharSequence charSequence = new ReversedSequence("abcdef");
-        String exp = "fedcba";
-        assertThat(charSequence.toString()).isEqualTo(exp);
-    }   
-    void testBuildApartmentsList3() {
-        List<Home> apartments = new ArrayList<>();
-        List<String> expected = new ArrayList<>();
-        List<String> result = App.buildApartmentsList(apartments, 10);
-        assertThat(result).isEqualTo(expected);
-    }
-
     // BEGIN
     @Test
     public void subSequence() {
