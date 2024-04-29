@@ -58,6 +58,17 @@ class AppTest {
 
     // BEGIN
     @Test
+    public void subSequence() {
+        CharSequence exp = new ReversedSequence("cde");
+        assertThat(charSequence.subSequence(1, 4)).isEqualTo(exp);
+    }
+    @Test
+    public void testToString() {
+        CharSequence charSequence = new ReversedSequence("abcdef");
+        String exp = "fedcba";
+        assertThat(charSequence.toString()).isEqualTo(exp);
+    }
+    @Test
     public void length() {
         CharSequence charSequence = new ReversedSequence("abcdef");
         int exp = 6;
@@ -69,19 +80,6 @@ class AppTest {
         CharSequence charSequence = new ReversedSequence("abcdef");
         char exp = 'e';
         assertThat(charSequence.charAt(1)).isEqualTo(exp);
-
-    }
-
-    @Test
-    public void subSequence() {
-        CharSequence exp = new ReversedSequence("cde");
-        assertThat(charSequence.subSequence(1, 4)).isEqualTo(exp);
-    }
-    @Test
-    public void testToString() {
-        CharSequence charSequence = new ReversedSequence("abcdef");
-        String exp = "fedcba";
-        assertThat(charSequence.toString()).isEqualTo(exp);
-    }
+    } 
     // END
 }
