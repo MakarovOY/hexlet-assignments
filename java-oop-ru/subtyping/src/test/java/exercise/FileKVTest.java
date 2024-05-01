@@ -50,7 +50,7 @@ class FileKVTest {
 
     @Test
     void getTest() {
-        Map <String, String>  mapTest = new HashMap<>(Map.of("key1", "value1"));
+        Map<String, String>  mapTest = new HashMap<>(Map.of("key1", "value1"));
         KeyValueStorage keyValueStorage = new FileKV("src/test/resources/file", mapTest);
         String actual = keyValueStorage.get("key1", "def v");
         String expected = "value1";
