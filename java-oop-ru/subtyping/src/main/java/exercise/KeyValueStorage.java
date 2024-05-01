@@ -1,5 +1,5 @@
 package exercise;
-
+import java.io.IOException;
 import java.util.Map;
 
 interface KeyValueStorage {
