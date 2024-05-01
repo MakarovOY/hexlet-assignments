@@ -13,7 +13,7 @@ public class FileKV implements KeyValueStorage {
     private String filepath;
     private Map<String, String> dataBase;
 
-    public FileKV(String filepath, Map<String, String> initialValueOfDB){
+    public FileKV(String filepath, Map<String, String> initialValueOfDB) {
         this.filepath = filepath;
         dataBase = new HashMap<>(initialValueOfDB);
         String json = Utils.serialize(dataBase);
@@ -24,9 +24,9 @@ public class FileKV implements KeyValueStorage {
 
     @Override
     public void set(String key, String value) {
-        dataBase.put(key,value);
-       String json=  Utils.serialize(dataBase);
-       Utils.writeFile(filepath, json);
+        dataBase.put(key, value);
+        String json=  Utils.serialize(dataBase);
+        Utils.writeFile(filepath, json);
 
     }
 
@@ -34,7 +34,7 @@ public class FileKV implements KeyValueStorage {
     public void unset(String key) throws IOException {
 
         Path path = Paths.get(filepath);
-        Files.writeString(path,"");
+        Files.writeString(path, "");
 
         dataBase.remove(key);
         String json = Utils.serialize(dataBase);
@@ -45,7 +45,7 @@ public class FileKV implements KeyValueStorage {
 
     @Override
     public String get(String key, String defaultValue) {
-        if (dataBase.containsKey(key)){
+        if (dataBase.containsKey(key)) {
             return dataBase.get(key);
         }
         return defaultValue;
