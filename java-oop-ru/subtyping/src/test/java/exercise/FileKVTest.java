@@ -11,7 +11,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Map;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 // END
 
@@ -28,10 +27,10 @@ class FileKVTest {
     }
 
     // BEGIN
-@Test
+    @Test
     void unsetTest() throws IOException {
-        Map <String, String>  mapTest = new HashMap<>(Map.of("key1", "value1","key2","key2"));
-        KeyValueStorage keyValueStorage = new FileKV("src/test/resources/file",mapTest);
+        Map<String, String>  mapTest = new HashMap<>(Map.of("key1", "value1", "key2", "key2"));
+        KeyValueStorage keyValueStorage = new FileKV("src/test/resources/file", mapTest);
         keyValueStorage.unset("key2");
         String exp = "{\"key1\":\"value1\"}";
         String  act = Utils.readFile("src/test/resources/file");
@@ -40,9 +39,9 @@ class FileKVTest {
     }
 
     @Test
-    void setTest(){
-        Map <String, String>  mapTest = new HashMap<>(Map.of("key1", "value1"));
-        KeyValueStorage keyValueStorage = new FileKV("src/test/resources/file",mapTest);
+    void setTest() {
+        Map<String, String>  mapTest = new HashMap<>(Map.of("key1", "value1"));
+        KeyValueStorage keyValueStorage = new FileKV("src/test/resources/file", mapTest);
         keyValueStorage.set("key2", "value2");
         String actual = Utils.readFile("src/test/resources/file");
         String exp = "{\"key1\":\"value1\",\"key2\":\"value2\"}";
@@ -50,30 +49,29 @@ class FileKVTest {
     }
 
     @Test
-    void getTest(){
+    void getTest() {
         Map <String, String>  mapTest = new HashMap<>(Map.of("key1", "value1"));
-        KeyValueStorage keyValueStorage = new FileKV("src/test/resources/file",mapTest);
+        KeyValueStorage keyValueStorage = new FileKV("src/test/resources/file", mapTest);
         String actual = keyValueStorage.get("key1", "def v");
         String expected = "value1";
         assertThat(actual).isEqualTo(expected);
 
     }
     @Test
-    void getTest2(){
-        Map <String, String>  mapTest = new HashMap<>(Map.of("key1", "value1"));
-        KeyValueStorage keyValueStorage = new FileKV("src/test/resources/file",mapTest);
+    void getTest2() {
+        Map<String, String>  mapTest = new HashMap<>(Map.of("key1", "value1"));
+        KeyValueStorage keyValueStorage = new FileKV("src/test/resources/file", mapTest);
         String actual = keyValueStorage.get("key2", "def v");
         String expected = "def v";
         assertThat(actual).isEqualTo(expected);
 
     }
     @Test
-    void toMapTest(){
-        Map <String, String>  mapTest = new HashMap<>(Map.of("key1", "value1"));
-        KeyValueStorage keyValueStorage = new FileKV("src/test/resources/file",mapTest);
+    void toMapTest() {
+        Map<String, String>  mapTest = new HashMap<>(Map.of("key1", "value1"));
+        KeyValueStorage keyValueStorage = new FileKV("src/test/resources/file", mapTest);
         assertThat(mapTest).isEqualTo(keyValueStorage.toMap());
 
     }
-    
     // END
 }
