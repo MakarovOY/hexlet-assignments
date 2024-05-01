@@ -6,11 +6,11 @@ import java.util.HashMap;
 // BEGIN
 public class InMemoryKV implements KeyValueStorage {
 
-    private Map <String, String> valueOfDB;
+    private Map<String, String> valueOfDB;
 
     public InMemoryKV(Map valueOfDB) {
 
-        this.valueOfDB = new HashMap<>(valueOfDB)  ;
+        this.valueOfDB = new HashMap<>(valueOfDB);
     }
 
 
@@ -27,7 +27,7 @@ public class InMemoryKV implements KeyValueStorage {
 
     @Override
     public String get(String key, String defaultValue) {
-        if (valueOfDB.containsKey(key)){
+        if (valueOfDB.containsKey(key)) {
             return valueOfDB.get(key);
         }
         return defaultValue;
