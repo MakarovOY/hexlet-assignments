@@ -4,12 +4,13 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Map;
 import java.util.HashMap;
+import java.io.IOException;
 
 
 class InMemoryKVTest {
 
     @Test
-    void inMemoryKVTest() {
+    void inMemoryKVTest() throws IOException {
         KeyValueStorage storage = new InMemoryKV(Map.of("key", "10"));
         assertThat(storage.get("key2", "default")).isEqualTo("default");
         assertThat(storage.get("key", "default")).isEqualTo("10");
