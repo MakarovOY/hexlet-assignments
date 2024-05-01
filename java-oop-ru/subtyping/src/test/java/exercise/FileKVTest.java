@@ -20,7 +20,7 @@ class FileKVTest {
     private static Path filepath = Paths.get("src/test/resources/file").toAbsolutePath().normalize();
 
     @BeforeEach
-    public void beforeEach() throws Exception {
+    public void beforeEach() throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         String content = mapper.writeValueAsString(new HashMap<String, String>());
         Files.writeString(filepath, content, StandardOpenOption.CREATE);
