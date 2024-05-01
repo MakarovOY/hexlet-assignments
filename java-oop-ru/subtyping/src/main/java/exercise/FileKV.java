@@ -25,7 +25,7 @@ public class FileKV implements KeyValueStorage {
     @Override
     public void set(String key, String value) {
         dataBase.put(key, value);
-        String json=  Utils.serialize(dataBase);
+        String json =  Utils.serialize(dataBase);
         Utils.writeFile(filepath, json);
 
     }
