@@ -2,15 +2,14 @@ package exercise;
 
 import java.util.Map;
 import java.util.List;
-import java.util.stream.Collectors;
 
 // BEGIN
-public class PairedTag extends Tag{
+public class PairedTag extends Tag {
 
     String text;
     List<Tag> children;
 
-    public PairedTag(String name, Map<String, String> attributes, String text, List<Tag> children){
+    public PairedTag(String name, Map<String, String> attributes, String text, List<Tag> children) {
 
         super(name, attributes);
         this.text = text;
@@ -25,18 +24,18 @@ public class PairedTag extends Tag{
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        if (attributes.size() == 0){
+        if (attributes.size() == 0) {
             return String.format("<%s></%s>", name, name);
         }
 
 
-        attributes.forEach((k,v) ->{
+        attributes.forEach((k, v) -> {
             stringBuilder.append(String.format(" %s=\"%s\"", k, attributes.get(k)));
 
         });
 
-        if (children.size() == 0){
-            return "<"+ name + stringBuilder + ">" + String.format("%s</%s>",text, name);
+        if (children.size() == 0) {
+            return "<" + name + stringBuilder + ">" + String.format("%s</%s>", text, name);
         }
 
 
@@ -48,7 +47,7 @@ public class PairedTag extends Tag{
 
 
 
-        return "<"+ name + stringBuilder + ">" + String.format("%s</%s>",stringBuilderChild, name);
+        return "<" + name + stringBuilder + ">" + String.format("%s</%s>", stringBuilderChild, name);
 
     }
 }
