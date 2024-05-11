@@ -5,8 +5,8 @@ import java.util.Map;
 // BEGIN
 public class SingleTag extends Tag {
 
-    public SingleTag(String name, Map< String, String> attributes){
-        super(name,attributes);
+    public SingleTag(String name, Map<String, String> attributes) {
+        super(name, attributes);
     }
 
     @Override
@@ -16,11 +16,11 @@ public class SingleTag extends Tag {
         }
         StringBuilder stringBuilder = new StringBuilder();
 
-        attributes.forEach((k,v) ->{
+        attributes.forEach((k, v) -> {
             stringBuilder.append(String.format(" %s=\"%s\"", k, attributes.get(k)));
         });
 
-        return "<"+ name + stringBuilder + ">";
+        return "<" + name + stringBuilder + ">";
 
 
     }
