@@ -16,4 +16,5 @@ public class LabelTag implements TagInterface {
 
         return String.format("<label>%s%s</label>", value, tag.render());
     }
+}
 // END
