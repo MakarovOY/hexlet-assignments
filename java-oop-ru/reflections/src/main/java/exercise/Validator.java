@@ -44,9 +44,9 @@ public class Validator {
             MinLength minL = field.getAnnotation(MinLength.class);
             NotNull notNull = field.getAnnotation(NotNull.class);
 
-            List<String> list= new ArrayList<>();
+            List<String> list = new ArrayList<>();
 
-            if(minL != null) {
+            if (minL != null) {
                 Object obj;
                 field.setAccessible(true);
                 try {
@@ -55,30 +55,29 @@ public class Validator {
                     throw new RuntimeException(e);
                 }
                 if (obj.toString().length() < minL.minLength()) {
-                    list.add(String.format("length less than %s", minL.minLength() ));
+                    list.add(String.format("length less than %s", minL.minLength()));
 
                 }
 
             }
-             if (notNull != null) {
-                 Object obj;
-                 try {
-                     field.setAccessible(true);
-                     obj = field.get(address);
-                 } catch (IllegalAccessException e) {
-                     throw new RuntimeException(e);
-                 }
+            if (notNull != null) {
+                Object obj;
+                try {
+                    field.setAccessible(true);
+                    obj = field.get(address);
+                } catch (IllegalAccessException e) {
+                    throw new RuntimeException(e);
+                }
 
-                 if (obj == null) {
-                     list.add("can not be null");
-                 }
+                if (obj == null) {
+                    list.add("can not be null");
+                }
 
-
-             }
-             map.put(field.getName(), list);
-         }
-            return map;
+            }
+            map.put(field.getName(), list);
         }
+        return map;
+    }
 }
 
 // END
