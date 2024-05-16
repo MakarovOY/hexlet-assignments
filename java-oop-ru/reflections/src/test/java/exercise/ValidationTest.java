@@ -34,6 +34,6 @@ class ValidationTest {
         String expected = Validator.advancedValidate(address).toString();
         assertThat(result.toString()).isEqualTo(expected);
 
-    }    
+    }
     // END
 }
