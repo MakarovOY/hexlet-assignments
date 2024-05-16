@@ -12,20 +12,20 @@ public class Validator {
 
         List<String> listWithNullFields = new ArrayList<>();
 
-        for (Field field: address.getClass().getDeclaredFields()){
+        for (Field field: address.getClass().getDeclaredFields()) {
             NotNull notNull = field.getAnnotation(NotNull.class);
 
 
-            if(notNull != null) {
+            if (notNull != null) {
                 Object obj;
                 try {
                     field.setAccessible(true);
-                    obj=field.get(address);
+                    obj = field.get(address);
                 } catch (IllegalAccessException e) {
                     throw new RuntimeException(e);
                 }
 
-                if (obj == null){
+                if (obj == null) {
                     listWithNullFields.add(field.getName());
                 }
 
@@ -39,39 +39,37 @@ public class Validator {
 
         Map<String, List<String>> map = new HashMap<>();
 
-         Field[] fields = address.getClass().getDeclaredFields();
-         for (Field field : fields) {
-             MinLength minL = field.getAnnotation(MinLength.class);
-             NotNull notNull = field.getAnnotation(NotNull.class);
+        Field[] fields = address.getClass().getDeclaredFields();
+        for (Field field : fields) {
+            MinLength minL = field.getAnnotation(MinLength.class);
+            NotNull notNull = field.getAnnotation(NotNull.class);
 
-             List<String> list= new ArrayList<>();
+            List<String> list= new ArrayList<>();
 
-             if(minL != null) {
+            if(minL != null) {
+                Object obj;
+                field.setAccessible(true);
+                try {
+                    obj = field.get(address);
+                } catch (IllegalAccessException e) {
+                    throw new RuntimeException(e);
+                }
+                if (obj.toString().length() < minL.minLength()) {
+                    list.add(String.format("length less than %s", minL.minLength() ));
+
+                }
+
+            }
+             if (notNull != null) {
                  Object obj;
-                 field.setAccessible(true);
                  try {
+                     field.setAccessible(true);
                      obj = field.get(address);
                  } catch (IllegalAccessException e) {
                      throw new RuntimeException(e);
                  }
-                 if (obj.toString().length() < minL.minLength()) {
-                     list.add(String.format("length less than %s", minL.minLength() ));
 
-                 }
-
-
-
-             }
-             if(notNull != null) {
-                 Object obj;
-                 try {
-                     field.setAccessible(true);
-                     obj=field.get(address);
-                 } catch (IllegalAccessException e) {
-                     throw new RuntimeException(e);
-                 }
-
-                 if (obj == null){
+                 if (obj == null) {
                      list.add("can not be null");
                  }
 
