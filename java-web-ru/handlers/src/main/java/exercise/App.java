@@ -8,9 +8,9 @@ public final class App {
 
         // BEGIN
         var app = Javalin.create(config -> config.bundledPlugins.enableDevLogging());
-        app.get("/users", ctx -> ctx.result("GET /users"));
-        app.post("/users", ctx -> ctx.result("POST /users"));
-        app.start(7070);
+        app.get("/phones", ctx -> ctx.json(Data.getPhones().toString()));
+        app.get("/domains", ctx -> ctx.json(Data.getDomains().toString()));
+        return app;
         // END
     }
 
