@@ -15,15 +15,15 @@ public final class App {
         });
 
         // BEGIN
-        app.get("/users", ctx ->{
+        app.get("/users", ctx -> {
             var page = ctx.queryParamAsClass("page", Integer.class).getOrDefault(1);
             var per = ctx.queryParamAsClass("per", Integer.class).getOrDefault(5);
             List<Map<String, String>> usersPerPage = new ArrayList<>();
-            for( int i = per * page - per; i < per * page; i++){
+            for (int i = per * page - per; i < per * page; i++) {
                 usersPerPage.add(Data.getUsers().get(i));
             }
             ctx.json(usersPerPage);
-        } );
+        });
         // END
 
         return app;
