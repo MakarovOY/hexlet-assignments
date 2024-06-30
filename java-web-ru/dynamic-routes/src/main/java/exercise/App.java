@@ -27,10 +27,10 @@ public final class App {
                 if (value.equals(id)) {
                     ctx.json(company);
                 }
-                if (!isFined) {
+            }
+             if (!isFined) {
                     throw new NotFoundResponse("Company not found");
                 }
-            }
         });
         // END
 
