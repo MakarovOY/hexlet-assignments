@@ -25,12 +25,13 @@ public final class App {
             for (Map<String, String> company : COMPANIES) {
                 var value = company.get("id");
                 if (value.equals(id)) {
+                    isFined = true;
                     ctx.json(company);
                 }
             }
-             if (!isFined) {
-                    throw new NotFoundResponse("Company not found");
-                }
+            if (!isFined) {
+                throw new NotFoundResponse("Company not found");
+            }
         });
         // END
 
