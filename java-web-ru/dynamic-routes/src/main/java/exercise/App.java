@@ -19,12 +19,12 @@ public final class App {
         });
 
         // BEGIN
-            app.get("/companies/{id}", ctx -> {
-        var id = ctx.pathParam("id");
+        app.get("/companies/{id}", ctx -> {
+            var id = ctx.pathParam("id");
                 for (Map<String, String> company : COMPANIES) {
                     var value = company.get("id");
-                   if (value.equals(id)) {
-                       ctx.json(company);
+                       if (value.equals(id)) {
+                           ctx.json(company);
                    }
                    throw new NotFoundResponse("Company not found");
                 }
