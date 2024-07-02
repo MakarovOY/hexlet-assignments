@@ -10,7 +10,4 @@
                   </ul></a>
           </div>
         @endfor
-`,
-mainPageLink = @`
-    <a href="/">main page</a>
 `)
