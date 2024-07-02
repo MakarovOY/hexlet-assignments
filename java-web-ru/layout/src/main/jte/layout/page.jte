@@ -1,7 +1,5 @@
 @import gg.jte.Content
 @param Content content
-@param Content mainPageLink = null
-@param Content usersLink = null
 
 <!doctype html>
 <html lang="en">
@@ -12,12 +10,8 @@
     </head>
     <body>
     <header>
-        @if (usersLink != null)
-        <p>${usersLink} </p>
-        @endif
-        @if (mainPageLink != null)
-            <p> ${mainPageLink} </p>
-        @endif
+<a href="/users">users</a>
+<a href="/">main page</a>  
     </header>
     <div>
         <p>
