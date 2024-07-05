@@ -2,7 +2,6 @@ package exercise;
 
 import io.javalin.Javalin;
 import java.util.List;
-import java.util.ArrayList;
 import exercise.model.User;
 import exercise.dto.users.UsersPage;
 import static io.javalin.rendering.template.TemplateUtil.model;
@@ -32,7 +31,9 @@ public final class App {
                                 toLowerCase().substring(0,1).equals(term.toLowerCase().substring(0,1))
                         ).findFirst().stream().toList();
             } else {
-                users = new ArrayList<>(USERS);
+                users = USERS.
+                        stream().
+                        toList();
             }
             var page = new UsersPage(users, term);
             ctx.render("users/index.jte", model("page", page));
