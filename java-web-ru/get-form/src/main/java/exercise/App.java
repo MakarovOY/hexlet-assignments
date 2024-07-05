@@ -22,7 +22,20 @@ public final class App {
         });
 
         // BEGIN
-        
+        app.get("/users", ctx -> {
+            List<User> users;
+            var term = ctx.queryParam("term");
+            if (term != null) {
+                users = USERS.stream().
+                        filter(user -> user.getFirstName().
+                                toLowerCase().substring(0,1).equals(term.toLowerCase().substring(0,1))
+                        ).findFirst().stream().toList();
+            } else {
+                users = new ArrayList<>(USERS);
+            }
+            var page = new UsersPage(users, term);
+            ctx.render("users/index.jte", model("page", page));
+        });
         // END
 
         app.get("/", ctx -> {
