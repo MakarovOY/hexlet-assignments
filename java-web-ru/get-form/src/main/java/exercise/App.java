@@ -28,8 +28,8 @@ public final class App {
             if (term != null) {
                 users = USERS.stream().
                         filter(user -> user.getFirstName().
-                                toLowerCase().substring(0,1).equals(term.toLowerCase().substring(0,1))
-                        ).findFirst().stream().toList();
+                                toLowerCase().substring(0, 1).equals(term.toLowerCase().substring(0, 1))
+                        ).toList();
             } else {
                 users = USERS.
                         stream().
