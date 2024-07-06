@@ -3,9 +3,16 @@
 
 @template.layout.page(
 content = @`
-    <form action="/users" method="get">
+
+       <form action="/users" method="get">
         <input type="search" name="term" value="${page.getTerm()}" />
         <input type="submit" value="Search" />
     </form>
+   @if(page.getTerm() == null)
+
+       @else
+
+        <p>${page.getUsers().toString()}</p>>
+        @endif
 `
 )
