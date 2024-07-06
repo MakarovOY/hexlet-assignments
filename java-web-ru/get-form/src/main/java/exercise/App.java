@@ -26,9 +26,10 @@ public final class App {
             List<User> users;
             var term = ctx.queryParam("term");
             if (term != null) {
+                int termLength =term.length();
                 users = USERS.stream().
                         filter(user -> user.getFirstName().
-                                toLowerCase().substring(0, 1).equals(term.toLowerCase().substring(0, 1))
+                                toLowerCase().substring(0, termLength).equals(term.toLowerCase())
                         ).toList();
             } else {
                 users = USERS.
