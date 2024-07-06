@@ -10,6 +10,8 @@ content = @`
     </form>
    @if(page.getTerm() == null)
 
+       <p>${page.getUsers().toString()}</p>>
+
        @else
 
         <p>${page.getUsers().toString()}</p>>
