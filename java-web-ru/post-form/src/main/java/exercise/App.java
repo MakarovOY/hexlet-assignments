@@ -30,6 +30,18 @@ public final class App {
         });
 
         // BEGIN
+              app.get("/users/build", ctx -> ctx.render("users/build.jte"));
+        app.post("/users", ctx -> {
+
+           var firstName = StringUtils.capitalize(ctx.formParam("firstName"));
+           var lastName = StringUtils.capitalize(ctx.formParam("lastName"));
+           var email = ctx.formParam("email").toLowerCase().trim();
+           var password = Security.encrypt(ctx.formParam("password"));
+
+           User newUser = new User(firstName, lastName, email, password);
+           UserRepository.save(newUser);
+           ctx.redirect("/users");
+        });
         
         // END
 
