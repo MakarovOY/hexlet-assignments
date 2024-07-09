@@ -31,7 +31,31 @@ public final class App {
         });
 
         // BEGIN
-        
+        app.get("/articles/build", ctx -> ctx.render("articles/build.jte"));
+        app.post("/articles", ctx -> {
+            var title =ctx.formParam("title");
+            var content = ctx.formParam("content");
+
+        try {
+            ctx.formParamAsClass("title", String.class)
+                    .check(value -> value.length() >= 2, "Название не должно быть короче двух символов")
+                    .get();
+            ctx.formParamAsClass("content", String.class)
+                    .check(value -> value.length() >= 10, "Статья должна быть не короче 10 символов")
+                    .get();
+            ctx.formParamAsClass("title", String.class)
+                    .check(value -> !ArticleRepository.existsByTitle(value), "Статья с таким названием уже существует")
+                    .get();
+            Article newArticle = new Article(title, content);
+            ArticleRepository.save(newArticle);
+
+            ctx.redirect("/articles");
+        } catch (ValidationException e) {
+            ctx.status(422);
+            var page = new BuildArticlePage(title, content, e.getErrors());
+            ctx.render("articles/build.jte", model("page", page));
+        }
+        });        
         // END
 
         return app;
