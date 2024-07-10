@@ -7,6 +7,12 @@ public class NamedRoutes {
     }
 
     // BEGIN
-    
+    public static String postPath(Long postId) {
+        return "/posts/" + postId;
+    }
+
+    public static String postsPath() {
+        return "/posts";
+    }    
     // END
 }
