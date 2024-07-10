@@ -12,6 +12,19 @@ import io.javalin.http.NotFoundResponse;
 public class PostsController {
 
     // BEGIN
-    
+    public static void showPost(Context ctx) {
+       Long id =  ctx.pathParamAsClass("id", Long.class).get();
+       var post = PostRepository.find(id).orElseThrow(() -> new NotFoundResponse("Page not found"));
+       PostPage page = new PostPage(post);
+       ctx.render("posts/show.jte", model("page", page));
+    }
+
+    public static void showPosts(Context ctx) {
+        var pageNumber = ctx.queryParamAsClass("page", Integer.class).getOrDefault(1);
+        var pageSize = 5;
+        var posts = PostRepository.findAll(pageNumber, pageSize);
+        var page = new PostsPage(posts, pageNumber);
+        ctx.render("posts/index.jte", model("page", page));
+    }
     // END
 }
