@@ -13,7 +13,9 @@
                 ${page.getPost().getBody()}
             </div>
             <!-- BEGIN -->
-            
+            <div>
+                <a href="/posts/${page.getPost().getId()}/edit">отредактировать пост</a>
+            </div>            
             <!-- END -->
         </main>
     `
