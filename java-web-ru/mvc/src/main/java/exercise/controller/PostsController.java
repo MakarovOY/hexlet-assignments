@@ -58,6 +58,36 @@ public class PostsController {
     }
 
     // BEGIN
-    
+    public static void editBuild(Context ctx) {
+        var id = ctx.pathParamAsClass("id", Long.class).get();
+        var post = PostRepository.find(id).orElseThrow(() -> new NotFoundResponse("Post not found"));
+        var name = post.getName();
+        var body = post.getBody();
+        var page = new EditPostPage(id, name, body, null);
+        ctx.render("posts/edit.jte", model("page", page));
+    }
+
+    public static void editPost(Context ctx) {
+        try {
+            var id = ctx.formParamAsClass("id", Long.class).get();
+
+            var name = ctx.formParamAsClass("name", String.class)
+                    .check(value -> value.length() >= 2, "Название не должно быть короче двух символов")
+                .get();
+            var body = ctx.formParamAsClass("body", String.class)
+                    .check(value -> value.length() >= 10, "Пост должен быть не короче 10 символов")
+                .get();
+            var post = PostRepository.find(id).orElseThrow(() -> new NotFoundResponse("Post not found"));
+            post.setName(name);
+            post.setBody(body);
+            ctx.redirect(NamedRoutes.postsPath());
+        } catch (ValidationException e) {
+            var id = ctx.formParamAsClass("id", Long.class).get();
+            var name = ctx.formParam("name");
+            var body = ctx.formParam("body");
+            var page = new EditPostPage(id, name, body, e.getErrors());
+            ctx.render("posts/edit.jte", model("page", page)).status(422);
+        }
+    }    
     // END
 }
