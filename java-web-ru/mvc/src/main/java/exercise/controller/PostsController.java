@@ -69,7 +69,7 @@ public class PostsController {
 
     public static void editPost(Context ctx) {
         try {
-            var id = ctx.formParamAsClass("id", Long.class).get();
+            var id = ctx.pathParamAsClass("id", Long.class).get();
 
             var name = ctx.formParamAsClass("name", String.class)
                     .check(value -> value.length() >= 2, "Название не должно быть короче двух символов")
