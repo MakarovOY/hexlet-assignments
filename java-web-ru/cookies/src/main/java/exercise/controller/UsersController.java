@@ -39,6 +39,7 @@ public class UsersController {
             ctx.render("users/show.jte", model("page", page));
         } else {
             ctx.redirect(NamedRoutes.buildUserPath());
-        }    
+        }
+    }
     // END
 }
