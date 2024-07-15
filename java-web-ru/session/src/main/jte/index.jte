@@ -14,7 +14,7 @@
         <p>
         <form action="${NamedRoutes.logoutPath()}" method="post">
 
-            <input type="submit" value="выйти"/>
+            <input type="submit" value="Выйти"/>
         </form>
 
     @endif
