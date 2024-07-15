@@ -4,7 +4,8 @@ import static io.javalin.rendering.template.TemplateUtil.model;
 import exercise.dto.MainPage;
 import exercise.dto.LoginPage;
 import exercise.repository.UsersRepository;
-import static exercise.util.Security.encrypt;
+import exercise.util.Security;
+import exercise.util.NamedRoutes;
 
 import io.javalin.http.Context;
 
