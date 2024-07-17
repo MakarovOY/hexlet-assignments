@@ -19,6 +19,30 @@ public class PostsController {
     }
 
     // BEGIN
+    public static void create(Context ctx) {
+        String name = ctx.formParamAsClass("name", String.class)
+                .check(value -> value.length() >= 2, "Название не должно быть короче двух символов")
+                .get();
+        String body = ctx.formParam("body");
+        var post = new Post(name, body);
+        PostRepository.save(post);
+        ctx.sessionAttribute("flash", "Пост был успешно создан!");
+        ctx.redirect(NamedRoutes.postsPath());
+
+    }
+    public static void index (Context ctx) {
+        try{
+            String flash = ctx.consumeSessionAttribute("flash");
+            var posts = PostRepository.getEntities();
+            var page = new PostsPage(posts);
+            page.setFlash(flash);
+            ctx.render("posts.jte", model("page", page));
+        } catch(ValidationException e) {
+            ctx.render(NamedRoutes.buildPostPath());
+        }
+
+
+    }
     
     // END
 
