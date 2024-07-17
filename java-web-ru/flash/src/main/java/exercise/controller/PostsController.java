@@ -36,7 +36,7 @@ public class PostsController {
             var posts = PostRepository.getEntities();
             var page = new PostsPage(posts);
             page.setFlash(flash);
-            ctx.render("posts.jte", model("page", page));
+            ctx.render("posts/index.jte", model("page", page));
         } catch(ValidationException e) {
             ctx.render(NamedRoutes.buildPostPath());
         }
