@@ -13,7 +13,7 @@ public class HelloServlet extends HttpServlet {
     // BEGIN
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     String name = req.getParameter("name");
     String message = name == null ? String.format("Hello, %!", name) : "Hello, Guest!";
     req.setAttribute("message", message);
