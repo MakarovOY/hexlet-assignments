@@ -9,7 +9,14 @@ public class Application {
         var address = new Address("London", 12345678);
 
         // BEGIN
-        
+        for(Method method: address.getClass().getDeclaredMethods()) {
+            if(method.isAnnotationPresent(Inspect.class)){
+               String methodName = method.getName();
+               var returnType = method.getReturnType().getSimpleName();
+                System.out.println(String.format("Method %s returns a value of type %s",methodName, returnType));
+
+            }
+        }
         // END
     }
 }
