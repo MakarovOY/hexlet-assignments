@@ -3,6 +3,8 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
     // BEGIN
+    id("org.springframework.boot") version "3.2.2"
+    id("io.spring.dependency-management") version "1.1.3"
     
     // END
     application
@@ -21,6 +23,9 @@ repositories {
 
 dependencies {
     // BEGIN
+    implementation("org.springframework.boot:spring-boot-starter")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-devtools")
     
     // END
     testImplementation("org.springframework.boot:spring-boot-starter-test")
