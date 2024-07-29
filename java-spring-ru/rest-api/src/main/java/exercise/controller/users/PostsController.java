@@ -18,7 +18,7 @@ import exercise.Data;
 @RequestMapping(("/api"))
 public class PostsController {
 
-    List<Post> posts = Data.getPosts();
+    private List<Post> posts = Data.getPosts();
     @GetMapping("/users/{id}/posts")
     public List<Post> index(@PathVariable int id) {
            return posts.stream().filter(post -> post.getUserId() == id).toList();
