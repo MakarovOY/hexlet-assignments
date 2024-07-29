@@ -14,5 +14,24 @@ import exercise.model.Post;
 import exercise.Data;
 
 // BEGIN
+@RestController
+@RequestMapping(("/api"))
+public class PostsController {
+
+    List<Post> posts = Data.getPosts();
+    @GetMapping("/users/{id}/posts")
+    public List<Post> index(@PathVariable int id) {
+           return posts.stream().filter(post -> post.getUserId() == id).toList();
+    }
+
+    @PostMapping("/users/{id}/posts")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Post create(@PathVariable Integer id, @RequestBody Post post) {
+        post.setUserId(id);
+        posts.add(post);
+        return post;
+    }
+
+}
 
 // END
