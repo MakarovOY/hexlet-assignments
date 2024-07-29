@@ -21,6 +21,18 @@ public class Application {
     private List<User> users = Data.getUsers();
 
     // BEGIN
+    @Autowired
+    private UserProperties userProperties;
+    @GetMapping("/admins")
+    public List<String> admins () {
+        return users
+                .stream()
+                .filter(user -> userProperties.getAdmins().contains(user.getEmail()))
+                .map(user -> user.getName())
+                .sorted()
+                .toList();
+
+    }
     
     // END
 
