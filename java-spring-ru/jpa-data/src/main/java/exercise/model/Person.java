@@ -9,5 +9,17 @@ import lombok.Getter;
 import lombok.Setter;
 
 // BEGIN
+@Entity
+@Table
+@Getter
+@Setter
+public class Person {
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    Long id;
+    String firstName;
+    String lastName;
+
+}
 
 // END
