@@ -55,6 +55,7 @@ public class TasksController {
         Task updatedTask = taskRepository.findById(id).get();
         updatedTask.setTitle(task.getTitle());
         updatedTask.setDescription(task.getDescription());
+        taskRepository.save(updatedTask);
         return updatedTask;
     }
     
