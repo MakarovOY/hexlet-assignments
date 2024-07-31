@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.List;
+import java.util.Optional;
 
 import exercise.model.Task;
 import exercise.repository.TaskRepository;
@@ -40,6 +41,22 @@ public class TasksController {
     }
 
     // BEGIN
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Task create(@RequestBody Task task) {
+        return taskRepository.save(task);
+    }
+
+    @PutMapping("/{id}")
+    private Task update(@PathVariable long id, @RequestBody Task task) {
+        if(!taskRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Not found");
+        }
+        Task updatedTask = taskRepository.findById(id).get();
+        updatedTask.setTitle(task.getTitle());
+        updatedTask.setDescription(task.getDescription());
+        return updatedTask;
+    }
     
     // END
 
