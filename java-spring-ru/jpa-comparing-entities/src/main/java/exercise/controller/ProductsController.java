@@ -1,5 +1,6 @@
 package exercise.controller;
 
+import exercise.handler.GlobalExceptionHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +33,15 @@ public class ProductsController {
     }
 
     // BEGIN
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Product create(@RequestBody Product product) {
+       boolean isMatch = productRepository.findAll().stream().anyMatch(p -> p.getPrice() == product.getPrice() && p.getTitle().equals(product.getTitle()));
+            if(isMatch) {
+                throw  new ResourceAlreadyExistsException("");
+            }
+        return productRepository.save(product);
+    }
     
     // END
 
