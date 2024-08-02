@@ -1,11 +1,8 @@
 package exercise.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Sort;
 
 import java.util.List;
@@ -22,7 +19,19 @@ public class ProductsController {
     private ProductRepository productRepository;
 
     // BEGIN
-    
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<Product> index(@RequestParam(defaultValue = "-1") Integer min, @RequestParam(defaultValue = "-2") Integer max) {
+        if(min != -1 && max != -2) {
+            return productRepository.findAll(Sort.by(Sort.Order.asc("price"))).stream().filter(p -> p.getPrice() >= min && p.getPrice() <= max).toList();
+        } else if (min != -1) {
+            return productRepository.findAll(Sort.by(Sort.Order.asc("price"))).stream().filter(p -> p.getPrice() >= min).toList();
+        } else if (max != -2) {
+            return productRepository.findAll(Sort.by(Sort.Order.asc("price"))).stream().filter(p ->p.getPrice() <= max).toList();
+        } else {
+            return productRepository.findAll(Sort.by(Sort.Order.asc("price")));
+        }
+    }
     // END
 
     @GetMapping(path = "/{id}")
